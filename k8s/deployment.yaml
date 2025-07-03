@@ -19,7 +19,6 @@ spec:
       labels:
         app: anomaly-detector
     spec:
-    spec:
       serviceAccountName: anomaly-detector-ksa
       containers:
       - name: detector
@@ -32,5 +31,5 @@ spec:
           mountPath: /logs
       volumes:
       - name: logs
-        emptyDir: {}
-
+        configMap:
+          name: anomaly-logs
