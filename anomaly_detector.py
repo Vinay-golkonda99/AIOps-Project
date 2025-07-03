@@ -1,11 +1,11 @@
 import pandas as pd
 from sklearn.ensemble import IsolationForest
-import os, requests
+import os
 from google.cloud import storage
 
 def load_logs():
     """Load the logs for analysis"""
-    return pd.read_csv("/logs/logs.csv")  # Mount or pre-load via volume
+    return pd.read_csv("/logs/logs.csv")  # Pre-mounted logs
 
 def detect_anomalies(df):
     """Run Isolation Forest on selected features"""
@@ -14,21 +14,10 @@ def detect_anomalies(df):
     df['anomaly'] = model.fit_predict(features)
     return df[df['anomaly'] == -1]
 
-def send_slack_alert(anomalies):
-    webhook_url = os.getenv("SLACK_WEBHOOK")
-    if not webhook_url:
-        print("⚠️ Slack webhook not set")
-        return
-
-    message = {
-        "text": f"🚨 {len(anomalies)} anomalies detected!\nSample:\n{anomalies.head(3).to_json()}"
-    }
-    requests.post(webhook_url, json=message)
-
 def upload_to_gcs(source_file, destination_blob):
     bucket_name = os.getenv("GCS_BUCKET")
     if not bucket_name:
-        print("⚠️ GCS_BUCKET env var not set")
+        print("⚠️ GCS_BUCKET not set")
         return
 
     client = storage.Client()
@@ -44,7 +33,6 @@ def main():
     if not anomalies.empty:
         output_path = "/logs/anomalies.csv"
         anomalies.to_csv(output_path, index=False)
-        send_slack_alert(anomalies)
         upload_to_gcs(output_path, "anomalies/latest.csv")
     else:
         print("✅ No anomalies detected.")
