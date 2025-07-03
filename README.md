@@ -100,7 +100,7 @@ Bound via annotation + policy binding.
 ## TAKEAWAYS:
 BUILT FOR AIOps LEARNINGS FOR DEV ENVIRONEMENTS.
 
-## NEXT STEPS TO OPTIMIZE THIS PROJECT FOR REAL TIME APP LOGGING ANOMALIES AND MAKING IT SIMULATE PRODUCTION LEVEL 
+## NEXT STEPS TO OPTIMIZE AND MAKING IT SIMULATE PRODUCTION LEVEL 
 
 🟢 App Pod (real time traffic)	Generates logs to a file in the hostpath.
 🟠 Fluent Bit Sidecar	Tails logs from app container log file path → pushes to shared volume.
