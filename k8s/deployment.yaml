@@ -21,18 +21,27 @@ spec:
     spec:
       containers:
       - name: detector
-        image: vinaygolkonda99/anomaly-detector:latest  # ← Replace with your Docker Hub username
+        image: yourdockerhubusername/anomaly-detector:latest
         env:
-        - name: SLACK_WEBHOOK
-          valueFrom:
-            secretKeyRef:
-              name: slack-secret
-              key: webhook
         - name: GCS_BUCKET
-          value: "your-gcs-bucket"
+          value: "your-gcs-bucket-name"
         volumeMounts:
         - name: logs
           mountPath: /logs
       volumes:
       - name: logs
         emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: anomaly-detector
+  namespace: dev
+spec:
+  selector:
+    app: anomaly-detector
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
