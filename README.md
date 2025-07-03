@@ -9,7 +9,7 @@ This project implements a full-stack **AIOps pipeline** using:
 - ☁️ **GKE** for scalable deployment
 - 🔁 **Argo Rollouts** for safe canary deployment
 - 📦 **GCS integration** for anomaly report storage
-- 🚀 **GitHub Actions** (optional) for GitOps automation
+- 🚀 **GitHub Actions** for automation
 
 ---
 
