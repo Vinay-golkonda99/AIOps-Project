@@ -27,13 +27,14 @@ spec:
         - name: GCS_BUCKET
           value: "anomaly-detector-logs"
         volumeMounts:
-        - name: loginput
+        - name: input-logs
           mountPath: /logs/input
-        - name: logoutput
+          readOnly: true
+        - name: output-logs
           mountPath: /logs/output
       volumes:
-      - name: loginput
+      - name: input-logs
         configMap:
           name: anomaly-logs
-      - name: logoutput
+      - name: output-logs
         emptyDir: {}
