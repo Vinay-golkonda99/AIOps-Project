@@ -23,10 +23,10 @@ spec:
       serviceAccountName: anomaly-detector-ksa
       containers:
       - name: detector
-        image: yourdockerhubusername/anomaly-detector:latest
+        image: vinaygolkonda99/anomaly-detector:latest
         env:
         - name: GCS_BUCKET
-          value: "your-gcs-bucket-name"
+          value: "anomaly-detector-logs"
         volumeMounts:
         - name: logs
           mountPath: /logs
