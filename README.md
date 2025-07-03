@@ -57,7 +57,7 @@ Saved to /logs/output/anomalies.csv
 Uploaded to gs://anomaly-detector-logs/anomalies/latest.csv   # GO TO GCS AND DOWNLOAD THE CSV FILE TO CHECK THE ANOMALIES.
 
 
-Deployment (Argo Rollouts)
+### Deployment (Argo Rollouts)
 The app is deployed using Argo Rollouts with the following strategy:
 
 strategy:
@@ -68,20 +68,20 @@ strategy:
     - setWeight: 100
 # This ensures safe rollout for anomaly detection upgrades with real-time traffic.
 
- Logs Input (via ConfigMap)
+### Logs Input (via ConfigMap)
 You provide logs via a ConfigMap:
 
 kubectl create configmap anomaly-logs --from-file=logs.csv -n dev
 Mounts to /logs/input/logs.csv (read-only).
 
-Output Location
+### Output Location
 The container writes anomalies to:
 
 /logs/output/anomalies.csv  # Stored in emptyDir
 → uploaded to GCS bucket
 Make sure your ServiceAccount has correct IAM roles (Storage Object Admin).
 
-Verify Logs  # IT DISPLAYS THE ANOMALIDES FILE PUSHED TO GCS
+### Verify Logs  # IT DISPLAYS THE ANOMALIDES FILE PUSHED TO GCS
 View logs:
 
 kubectl logs -f <pod-name> -n dev
@@ -95,7 +95,7 @@ GCP SA: anomaly-gcs-access@<project>.iam.gserviceaccount.com
 
 Bound via annotation + policy binding.
 
-TAKEAWAYS:
+## TAKEAWAYS:
 BUILT for production-aligned AIOps learning and dev environment simulation.
 
 
