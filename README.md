@@ -98,7 +98,7 @@ GCP SA: anomaly-gcs-access@<project>.iam.gserviceaccount.com
 Bound via annotation + policy binding.
 
 ## TAKEAWAYS:
-BUILT for production-aligned AIOps learning and dev environment simulation.
+BUILT for production-aligned AIOps learning for dev environments.
 
 
 
