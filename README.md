@@ -91,7 +91,7 @@ THIS DISPLAYS THE ANOMALIES FILE PUSHED TO GCS
 🔐 IAM and Workload Identity
 This project uses GKE Workload Identity to securely grant GCS write access:
 
-Kubernetes SA: <KSA-NAME>
+Kubernetes SA: KSA-NAME
 
 GCP SA: GCP-SA-NAME@<project>.iam.gserviceaccount.com
 
