@@ -86,7 +86,7 @@ View logs:
 
 kubectl logs -f <pod-name> -n dev
 
-IT DISPLAYS THE ANOMALIES FILE PUSHED TO GCS
+THIS DISPLAYS THE ANOMALIES FILE PUSHED TO GCS
 
 🔐 IAM and Workload Identity
 This project uses GKE Workload Identity to securely grant GCS write access:
