@@ -28,8 +28,9 @@ jobs:
 
     - name: Build & Push to Docker Hub
       run: |
-        docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
+        docker build -f Dockerfile/Dockerfile -t $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
         docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG
+
 
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
