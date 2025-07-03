@@ -1,2 +1,2 @@
 # AIOps-Project
-Anamoly detection in log data using Isolation Forest Alogirthm
+Anomaly detection in log data using Isolation Forest Alogirthm
