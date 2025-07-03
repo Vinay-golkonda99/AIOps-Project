@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: anomaly-detector
+  namespace: dev
+spec:
+  replicas: 1
+  strategy:
+    canary:
+      steps:
+      - setWeight: 50
+      - pause: { duration: 30s }
+      - setWeight: 100
+  selector:
+    matchLabels:
+      app: anomaly-detector
+  template:
+    metadata:
+      labels:
+        app: anomaly-detector
+    spec:
+      containers:
+      - name: detector
+        image: vinaygolkonda99/anomaly-detector:latest  # ← Replace with your Docker Hub username
+        env:
+        - name: SLACK_WEBHOOK
+          valueFrom:
+            secretKeyRef:
+              name: slack-secret
+              key: webhook
+        - name: GCS_BUCKET
+          value: "your-gcs-bucket"
+        volumeMounts:
+        - name: logs
+          mountPath: /logs
+      volumes:
+      - name: logs
+        emptyDir: {}
