@@ -5,7 +5,7 @@ from google.cloud import storage
 
 def load_logs():
     """Load the logs for analysis"""
-    return pd.read_csv("/logs/logs.csv")  # Pre-mounted logs
+    return pd.read_csv("/logs/input/logs.csv")  # From ConfigMap (read-only)
 
 def detect_anomalies(df):
     """Run Isolation Forest on selected features"""
@@ -31,7 +31,7 @@ def main():
     anomalies = detect_anomalies(df)
 
     if not anomalies.empty:
-        output_path = "/logs/anomalies.csv"
+        output_path = "/logs/output/anomalies.csv"  # Writable path (emptyDir)
         anomalies.to_csv(output_path, index=False)
         upload_to_gcs(output_path, "anomalies/latest.csv")
     else:
