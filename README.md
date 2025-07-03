@@ -66,7 +66,7 @@ strategy:
     - setWeight: 50
     - pause: { duration: 30s }
     - setWeight: 100
-# This ensures safe rollout for anomaly detection upgrades with real-time traffic.
+This ensures safe rollout for anomaly detection upgrades with real-time traffic.
 
 ### Logs Input (via ConfigMap)
 You provide logs via a ConfigMap:
@@ -81,10 +81,12 @@ The container writes anomalies to:
 → uploaded to GCS bucket
 Make sure your ServiceAccount has correct IAM roles (Storage Object Admin).
 
-### Verify Logs  # IT DISPLAYS THE ANOMALIDES FILE PUSHED TO GCS
+### Verify Logs 
 View logs:
 
 kubectl logs -f <pod-name> -n dev
+
+IT DISPLAYS THE ANOMALIES FILE PUSHED TO GCS
 
 🔐 IAM and Workload Identity
 This project uses GKE Workload Identity to securely grant GCS write access:
