@@ -20,7 +20,7 @@ spec:
         app: anomaly-detector
     spec:
     spec:
-      serviceAccountName: anomaly-detector-sa
+      serviceAccountName: anomaly-detector-ksa
       containers:
       - name: detector
         image: yourdockerhubusername/anomaly-detector:latest
