@@ -56,7 +56,7 @@ Saved to /logs/output/anomalies.csv
 
 Uploaded to gs://anomaly-detector-logs/anomalies/latest.csv   # GO TO GCS AND DOWNLOAD THE CSV FILE TO CHECK THE ANOMALIES.
 
-
+```
 ### Deployment (Argo Rollouts)
 The app is deployed using Argo Rollouts with the following strategy:
 
