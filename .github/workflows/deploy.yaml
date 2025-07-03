@@ -30,7 +30,11 @@ jobs:
       run: |
         docker build -f Dockerfile/Dockerfile -t $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
         docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG
-
+        
+    - name: Debug GCloud Auth
+      run: |
+        gcloud auth list
+        gcloud config list account
 
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
