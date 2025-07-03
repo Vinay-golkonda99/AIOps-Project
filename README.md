@@ -98,9 +98,9 @@ GCP SA: GCP-SA-NAME@<project>.iam.gserviceaccount.com
 Bound via annotation + policy binding.
 
 ## TAKEAWAYS:
-BUILT for production-aligned AIOps learning for dev environments.
+BUILT FOR AIOps LEARNINGS FOR DEV ENVIRONEMENTS.
 
-## NEXT STEPS TO OPTIMIZE THIS PROJECT FOR REAL TIME APP LOGGING ANOMALIES 
+## NEXT STEPS TO OPTIMIZE THIS PROJECT FOR REAL TIME APP LOGGING ANOMALIES AND MAKING IT SIMULATE PRODUCTION LEVEL 
 
 🟢 App Pod (real time traffic)	Generates logs to a file in the hostpath.
 🟠 Fluent Bit Sidecar	Tails logs from app container log file path → pushes to shared volume.
