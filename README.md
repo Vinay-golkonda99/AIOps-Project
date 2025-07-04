@@ -1,6 +1,6 @@
 # AIOps-Project
 
-# 🧠 GKE-Based AIOps Anomaly Detector with Canary Rollouts
+# 🧠 GKE-Based AIOps Anomaly Detector 
 
 This project implements a full-stack **AIOps pipeline** using:
 
